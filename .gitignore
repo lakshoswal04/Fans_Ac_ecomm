@@ -121,4 +121,4 @@ Thumbs.db
 
 # Node.js backend specific
 /backend/dist/
-/backend/node_modules/ 
+/backend/node_modules/ .env
