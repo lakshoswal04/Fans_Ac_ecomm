@@ -1,17 +1,17 @@
-# CoolBreeze - Fans & AC E-commerce Platform
+CoolBreeze - Fans & AC E-commerce Platform
 
 A modern e-commerce platform for cooling products, featuring a responsive UI built with React and a robust Node.js backend.
 
-## Screenshots
+![image](https://github.com/user-attachments/assets/89c8133d-e1f3-4223-bd79-77cfc927cd9c)
 
-*Screenshots will be added here*
 
-## Architecture
 
-### Frontend
+ Architecture
 
-- **Technologies**: React, React Router, Tailwind CSS, React Icons
-- **Key Features**:
+ Frontend
+
+- Technologies: React, React Router, Tailwind CSS, React Icons
+- Key Features:
   - Responsive design for all device sizes
   - Product catalog with filtering options
   - Detailed product pages with color and size selection
@@ -20,10 +20,10 @@ A modern e-commerce platform for cooling products, featuring a responsive UI bui
   - Admin dashboard for order and product management
   - Rider portal for delivery management
 
-### Backend
+ Backend
 
-- **Technologies**: Node.js, Express, MongoDB, JWT
-- **Key Features**:
+- Technologies: Node.js, Express, MongoDB, JWT
+- Key Features:
   - RESTful API architecture
   - User authentication and authorization
   - Product management endpoints
@@ -31,31 +31,34 @@ A modern e-commerce platform for cooling products, featuring a responsive UI bui
   - Rider assignment and tracking
   - Fallback to mock data for development
 
-## Getting Started
+ Getting Started
 
-### Backend Setup
+ Backend Setup
 
 1. Navigate to the `backend` directory
 2. Install dependencies: `npm install`
 3. Create a `.env` file with MongoDB connection string
 4. Start the server: `npm start` or `npm run dev`
 
-### Frontend Setup
+ Frontend Setup
 
 1. Navigate to the `frontend` directory
 2. Install dependencies: `npm install`
 3. Start the development server: `npm start`
 
-## API Endpoints
+ API Endpoints
 
-- **Auth**: `/api/auth` - Login, register, and verification
-- **Products**: `/api/products` - Product CRUD operations
-- **Orders**: `/api/orders` - Order management
-- **Users**: `/api/users` - User profile management
-- **Riders**: `/api/riders` - Delivery personnel management
+- Auth: `/api/auth` - Login, register, and verification
+- Products: `/api/products` - Product CRUD operations
+- Orders: `/api/orders` - Order management
+- Users: `/api/users` - User profile management
+- Riders: `/api/riders` - Delivery personnel management
 
-## User Roles
+User Roles
 
-- **Customer**: Browse products, place orders, track deliveries
-- **Admin**: Manage products, view all orders, assign riders
-- **Rider**: Manage assigned deliveries, update delivery status 
+- Customer: Browse products, place orders, track deliveries
+- Admin: Manage products, view all orders, assign riders
+- Rider: Manage assigned deliveries, update delivery status
+
+- Demo Video link
+- 
