@@ -4,12 +4,12 @@ import { FaArrowLeft, FaTrash, FaMinus, FaPlus } from 'react-icons/fa';
 import { useCart } from '../contexts/CartContext';
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, clearCart, getCartTotal } = useCart();
+  const { cart, removeFromCart, updateQuantity, clearCart, getCartTotal, isCartEmpty } = useCart();
   
   // Calculate cart total
   const cartTotal = getCartTotal();
   
-  if (cart.length === 0) {
+  if (isCartEmpty()) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
@@ -49,7 +49,7 @@ const Cart = () => {
                     <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody>
                   {cart.map(item => (
                     <tr key={item.id} className="hover:bg-gray-50">
                       <td className="py-4 px-4">
@@ -58,6 +58,13 @@ const Cart = () => {
                           <div className="ml-4">
                             <Link to={`/product/${item.id}`} className="font-medium text-gray-900 hover:text-primary">{item.name}</Link>
                             <p className="text-sm text-gray-500">{item.category}</p>
+                            {(item.color || item.size) && (
+                              <p className="text-sm text-gray-500">
+                                {item.color && `Color: ${item.color}`}
+                                {item.color && item.size && ' | '}
+                                {item.size && `Size: ${item.size}`}
+                              </p>
+                            )}
                           </div>
                         </div>
                       </td>
@@ -111,7 +118,7 @@ const Cart = () => {
           </div>
           
           {/* Order Summary */}
-          <div className="lg:w-80">
+          <div className="lg:w-1/3">
             <div className="bg-white rounded-lg shadow-md p-6 sticky top-20">
               <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
               

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaCheckCircle, FaArrowLeft } from 'react-icons/fa';
+import { useCart } from '../contexts/CartContext';
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const { cart, clearCart } = useCart();
   const [activeStep, setActiveStep] = useState(1);
   const [orderComplete, setOrderComplete] = useState(false);
   
@@ -18,28 +20,8 @@ const Checkout = () => {
     zipCode: '',
   });
   
-  // Mock cart data
-  const cartItems = [
-    {
-      id: 1,
-      name: 'Premium Ceiling Fan',
-      price: 129.99,
-      quantity: 1,
-      color: 'White',
-      size: 'Medium',
-    },
-    {
-      id: 2,
-      name: 'Inverter Split AC',
-      price: 549.99,
-      quantity: 1,
-      color: 'White',
-      size: '1.5 Ton',
-    },
-  ];
-  
   // Calculate totals
-  const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   const shipping = subtotal > 100 ? 0 : 10;
   const tax = subtotal * 0.08;
   const total = subtotal + shipping + tax;
@@ -53,10 +35,24 @@ const Checkout = () => {
     setActiveStep(2);
   };
   
-  const handlePlaceOrder = () => {
-    // In a real app, this would send the order to the backend
-    console.log('Order placed with:', { shippingInfo, cartItems });
-    setOrderComplete(true);
+  const handlePlaceOrder = async () => {
+    try {
+      // Here you would typically make an API call to create the order
+      // For now, we'll just simulate a successful order
+      console.log('Order placed with:', { shippingInfo, cart });
+      
+      // Clear the cart after successful order
+      clearCart();
+      setOrderComplete(true);
+      
+      // Redirect to order confirmation page after a short delay
+      setTimeout(() => {
+        navigate('/order-confirmation');
+      }, 2000);
+    } catch (error) {
+      console.error('Error placing order:', error);
+      // Handle error appropriately
+    }
   };
   
   if (orderComplete) {
@@ -246,7 +242,7 @@ const Checkout = () => {
             
             {/* Items */}
             <div className="space-y-4 mb-6">
-              {cartItems.map((item) => (
+              {cart.map((item) => (
                 <div key={item.id} className="flex justify-between pb-4 border-b">
                   <div>
                     <div className="font-medium">{item.name}</div>

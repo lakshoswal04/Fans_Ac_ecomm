@@ -116,6 +116,7 @@ export const CartProvider = ({ children }) => {
   // Clear the entire cart
   const clearCart = useCallback(() => {
     setCart([]);
+    localStorage.removeItem('cart'); // Explicitly remove from localStorage
   }, []);
   
   // Get total number of items in cart
@@ -132,6 +133,11 @@ export const CartProvider = ({ children }) => {
     }, 0);
   }, [cart]);
   
+  // Add a function to check if cart is empty
+  const isCartEmpty = useCallback(() => {
+    return cart.length === 0;
+  }, [cart]);
+  
   const value = {
     cart,
     addToCart,
@@ -139,7 +145,8 @@ export const CartProvider = ({ children }) => {
     updateQuantity,
     clearCart,
     getCartCount,
-    getCartTotal
+    getCartTotal,
+    isCartEmpty
   };
   
   return (

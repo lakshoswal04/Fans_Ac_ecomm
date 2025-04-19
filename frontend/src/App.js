@@ -14,6 +14,7 @@ import ProductListing from './pages/ProductListing';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import OrderConfirmation from './pages/OrderConfirmation';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import AdminDashboard from './pages/admin/Dashboard';
@@ -139,6 +140,16 @@ function AppContent() {
                 !['customer', 'admin'].includes(userRole) ? 
                 <Navigate to="/" /> : <Checkout />
               ) : <Navigate to="/login" state={{ from: "/checkout" }} />
+            }
+          />
+          
+          <Route 
+            path="/order-confirmation" 
+            element={
+              user ? (
+                !['customer', 'admin'].includes(userRole) ? 
+                <Navigate to="/" /> : <OrderConfirmation />
+              ) : <Navigate to="/login" state={{ from: "/order-confirmation" }} />
             }
           />
           
