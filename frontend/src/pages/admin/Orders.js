@@ -28,7 +28,7 @@ const AdminOrders = () => {
             amount: 679.98,
             status: 'Delivered',
             products: [
-              { id: 1, name: 'Premium Ceiling Fan', price: 129.99, quantity: 1, color: 'White', size: 'Medium' },
+              { id: 1, name: 'Premium Ceiling Fan', price: 129.99, quantity: 1, color: 'Black', size: 'Medium' },
               { id: 3, name: 'Tower Fan', price: 89.99, quantity: 2, color: 'Black', size: 'Standard' }
             ],
             address: '123 Main St, Anytown, CA 12345',

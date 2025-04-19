@@ -35,11 +35,11 @@ const ProductListing = () => {
           {
             id: 1,
             name: 'Premium Ceiling Fan',
-            image: 'https://vguard.com/cdn/shop/files/CREATIVE_1_4e95c1ef-f7f8-44fe-a520-e8b665f56e8e.jpg?v=1711693554&width=1946',
+            image: 'https://images.unsplash.com/photo-1586106532668-f4977e9518b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
             price: 129.99,
             rating: 4.8,
             category: 'Fans',
-            colors: ['Gold', 'White', 'Brown'],
+            colors: ['Gold', 'Black', 'Brown'],
             sizes: ['Small', 'Medium', 'Large'],
             description: 'High-quality ceiling fan with remote control and LED light.'
           },
@@ -79,7 +79,7 @@ const ProductListing = () => {
           {
             id: 5,
             name: 'Decorative Ceiling Fan',
-            image: 'https://5.imimg.com/data5/BK/MA/MY-8330064/havells-ceiling-fan-500x500.jpg',
+            image: 'https://www.istockphoto.com/photos/ceiling-fan',
             price: 149.99,
             rating: 4.6,
             category: 'Fans',

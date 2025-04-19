@@ -65,7 +65,7 @@ const RiderOrders = () => {
             date: '2023-06-13',
             status: 'Shipped',
             items: [
-              { id: 1, name: 'Premium Ceiling Fan', price: 129.99, quantity: 1, color: 'White', size: 'Medium' },
+              { id: 1, name: 'Premium Ceiling Fan', price: 129.99, quantity: 1, color: 'Black', size: 'Medium' },
               { id: 7, name: 'Table Fan', price: 49.99, quantity: 1, color: 'Blue', size: 'Small' }
             ]
           },

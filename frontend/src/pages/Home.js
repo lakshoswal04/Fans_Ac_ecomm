@@ -31,7 +31,7 @@ const Home = () => {
       price: 129.99,
       rating: 4.8,
       category: 'Ceiling Fans',
-      colors: ['Gold', 'White', 'Brown'],
+      colors: ['Gold', 'Black', 'Brown'],
       sizes: ['Small', 'Medium', 'Large'],
       description: 'High-quality ceiling fan with remote control and LED light.'
     },

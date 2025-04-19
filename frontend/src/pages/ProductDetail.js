@@ -40,10 +40,10 @@ const ProductDetail = () => {
           rating: 4.8,
           reviewCount: 124,
           category: 'Ceiling Fans',
-            colors: ['Gold', 'White', 'Brown'],
+            colors: ['Gold', 'Black', 'Brown'],
             colorImages: {
               'Gold': 'https://images.unsplash.com/photo-1586106532668-f4977e9518b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-              'White': 'https://vguard.com/cdn/shop/files/CREATIVE_1_ad4d47ea-6aec-4bd9-b7d6-c23129daf39e.jpg?v=1711693004&width=713',
+              'Black': 'https://images.unsplash.com/photo-1558211246-bb8ae688a89a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
               'Brown': 'https://vguard.com/cdn/shop/files/CREATIVE_1_1d745ea2-fcfd-4cc0-b7ad-ae13c8c84008.jpg?v=1711691128&width=1920'
             },
           sizes: ['Small', 'Medium', 'Large'],
