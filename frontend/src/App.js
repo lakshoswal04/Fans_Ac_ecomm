@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { CartProvider } from './contexts/CartContext';
 import ToastProvider from './contexts/ToastContext';
@@ -54,8 +54,9 @@ function SafeGoogleOAuthProvider({ children }) {
 
 function AppContent() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState(null);
   
   // Check if current page is login or signup
@@ -77,8 +78,34 @@ function AppContent() {
     localStorage.removeItem('userRole');
   };
   
-  // We're no longer checking for stored user on initial load
-  // This ensures no user is automatically logged in when first accessing the site
+  // Load user from localStorage on initial render
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    const storedUserRole = localStorage.getItem('userRole');
+    
+    if (storedUser && storedUserRole) {
+      try {
+        const userData = JSON.parse(storedUser);
+        setUser(userData);
+        setUserRole(storedUserRole);
+        
+        // Redirect to appropriate dashboard if on home page
+        if (location.pathname === '/' && !isAuthPage) {
+          if (storedUserRole === 'admin') {
+            navigate('/admin');
+          } else if (storedUserRole === 'rider') {
+            navigate('/rider');
+          }
+        }
+      } catch (error) {
+        console.error('Error parsing user data from localStorage:', error);
+        localStorage.removeItem('user');
+        localStorage.removeItem('userRole');
+      }
+    }
+    
+    setLoading(false);
+  }, []);
   
   // Protected route components
   const ProtectedRoute = ({ children, allowedRoles }) => {

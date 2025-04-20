@@ -32,6 +32,8 @@ const Login = ({ onLogin }) => {
     setLoading(true);
 
     try {
+      console.log('Attempting login with:', formData.email);
+      
       // Send login request using our API service
       const response = await api.post('/auth/login', {
         email: formData.email,
@@ -49,6 +51,8 @@ const Login = ({ onLogin }) => {
           token: response.data.token
         };
 
+        console.log('Login successful. User role:', userData.role);
+
         // Set auth header for future requests
         api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
 
@@ -57,10 +61,13 @@ const Login = ({ onLogin }) => {
 
         // Redirect based on role or back to the page they came from
         if (userData.role === 'admin') {
+          console.log('Redirecting to admin dashboard');
           navigate('/admin');
         } else if (userData.role === 'rider') {
+          console.log('Redirecting to rider dashboard');
           navigate('/rider');
         } else {
+          console.log('Redirecting to:', from);
           navigate(from);
         }
       }

@@ -14,6 +14,8 @@ exports.register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
+    console.log('Registration request with role:', role);
+
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -23,13 +25,19 @@ exports.register = async (req, res) => {
       });
     }
 
-    // For demo purposes, determine role from email or use provided role
+    // Prioritize explicitly specified role, then detect from email as fallback
     let userRole = role || 'customer';
-    if (email.includes('admin')) {
-      userRole = 'admin';
-    } else if (email.includes('rider')) {
-      userRole = 'rider';
+    
+    // Only determine from email if no role was explicitly specified
+    if (!role) {
+      if (email.includes('admin')) {
+        userRole = 'admin';
+      } else if (email.includes('rider')) {
+        userRole = 'rider';
+      }
     }
+
+    console.log('Using role for new user:', userRole);
 
     // Hash the password
     const salt = await bcrypt.genSalt(10);
@@ -46,6 +54,8 @@ exports.register = async (req, res) => {
 
     // Generate token
     const token = user.getSignedJwtToken();
+
+    console.log('User created with role:', user.role);
 
     // Return response
     res.status(201).json({
@@ -74,6 +84,8 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    console.log('Login attempt for:', email);
+
     // Check if email and password are provided
     if (!email || !password) {
       return res.status(400).json({
@@ -90,6 +102,8 @@ exports.login = async (req, res) => {
         message: 'Invalid credentials'
       });
     }
+
+    console.log('User found with role:', user.role);
 
     // For users registered with Google (no password)
     if (!user.password) {
@@ -110,6 +124,8 @@ exports.login = async (req, res) => {
 
     // Generate token
     const token = user.getSignedJwtToken();
+
+    console.log('Login successful for user with role:', user.role);
 
     // Return response
     res.status(200).json({
