@@ -11,12 +11,39 @@ const api = axios.create({
   }
 });
 
+// Add a request interceptor to automatically set the token for all requests
+api.interceptors.request.use(
+  (config) => {
+    // Check if token exists in localStorage
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        if (user && user.token) {
+          config.headers['Authorization'] = `Bearer ${user.token}`;
+        }
+      } catch (error) {
+        console.error('Error parsing user from localStorage:', error);
+      }
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 // Handles server errors with fallback to mock data
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (!error.response || error.code === 'ECONNABORTED') {
-      console.warn('Backend server unavailable, using mock data');
+    // For authentication errors or server unavailable, use mock data in development
+    if (!error.response || error.code === 'ECONNABORTED' || 
+        (error.response && (error.response.status === 401 || error.response.status === 403))) {
+      
+      console.warn(error.response ? 
+        `Authentication error (${error.response.status}), using mock data` : 
+        'Backend server unavailable, using mock data');
       
       const originalRequest = error.config;
       const url = originalRequest.url;

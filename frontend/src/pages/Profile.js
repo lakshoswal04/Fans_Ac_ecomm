@@ -28,10 +28,9 @@ const Profile = ({ user, setUser }) => {
 
     const fetchUserData = async () => {
       setLoading(true);
+      setError('');
       try {
-        // Set the auth token for this request
-        api.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
-        
+        // No need to manually set Authorization header - it's now handled by the API interceptor
         const response = await api.get('/users/profile');
 
         if (response.data.success) {
@@ -45,7 +44,18 @@ const Profile = ({ user, setUser }) => {
         }
       } catch (err) {
         console.error('Error fetching profile:', err);
-        setError('Failed to load profile data');
+        
+        if (err.response && err.response.status === 403) {
+          // Authentication issue - token may be invalid or expired
+          setError('Authentication error. Please log in again.');
+          // Optional: You could auto-logout here
+          // setUser(null);
+          // localStorage.removeItem('user');
+          // localStorage.removeItem('userRole');
+          // navigate('/login');
+        } else {
+          setError('Failed to load profile data');
+        }
       } finally {
         setLoading(false);
       }

@@ -34,7 +34,7 @@ const ProductDetail = () => {
             id: 1,
           name: 'Premium Ceiling Fan',
           images: [
-              'https://images.unsplash.com/photo-1586106532668-f4977e9518b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+              'https://imgs.search.brave.com/hHyvBOsh_msIAdfKXhsvKksKhWPw38KRNfPUD_J4knc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFScmVkN3VTZ0wu/anBn',
           ],
           price: 129.99,
           rating: 4.8,
@@ -42,9 +42,9 @@ const ProductDetail = () => {
           category: 'Ceiling Fans',
             colors: ['Gold', 'Black', 'Brown'],
             colorImages: {
-              'Gold': 'https://images.unsplash.com/photo-1586106532668-f4977e9518b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-              'Black': 'https://images.unsplash.com/photo-1558211246-bb8ae688a89a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-              'Brown': 'https://vguard.com/cdn/shop/files/CREATIVE_1_1d745ea2-fcfd-4cc0-b7ad-ae13c8c84008.jpg?v=1711691128&width=1920'
+              'Gold': 'https://imgs.search.brave.com/hHyvBOsh_msIAdfKXhsvKksKhWPw38KRNfPUD_J4knc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFScmVkN3VTZ0wu/anBn',
+              'Black': 'https://imgs.search.brave.com/2JbFvs8fdZvBS-vZrx6926Fk4UdrV8EdXODUpabA_qo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDFQNEo2ZVRtUkwu/anBn',
+              'Brown': 'https://imgs.search.brave.com/z6Kle_B1r-eoPE0sZxZYflap7N5LZHg9sDM7Et4A67U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbWJy/b2NpYS5jb20vaW1h/Z2UvY2FjaGUvY2F0/YWxvZy9wcm9kdWN0/cy81MDYvaW5zaWdo/dC1nMS02MDB4NjAw/LmpwZw'
             },
           sizes: ['Small', 'Medium', 'Large'],
           description: 'Our Premium Ceiling Fan combines elegant design with powerful performance. With its energy-efficient motor and remote control operation, it provides exceptional airflow while reducing your energy costs. The fan includes LED lighting with adjustable brightness, making it a perfect addition to any room in your home.',

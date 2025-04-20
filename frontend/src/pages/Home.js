@@ -27,7 +27,7 @@ const Home = () => {
     {
       id: 1,
       name: 'Premium Ceiling Fan',
-      image: 'https://images.unsplash.com/photo-1586106532668-f4977e9518b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image: 'https://imgs.search.brave.com/hHyvBOsh_msIAdfKXhsvKksKhWPw38KRNfPUD_J4knc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFScmVkN3VTZ0wu/anBn', // Gold model as default
       price: 129.99,
       rating: 4.8,
       category: 'Ceiling Fans',

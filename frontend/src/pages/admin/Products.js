@@ -39,10 +39,10 @@ const Products = () => {
         {
           id: 1,
           name: 'Premium Ceiling Fan',
-          image: 'https://unsplash.com/photos/brown-and-white-5-blade-ceiling-fan-with-light-fixture-9ztXT2vPG2E',
+          image: 'https://imgs.search.brave.com/hHyvBOsh_msIAdfKXhsvKksKhWPw38KRNfPUD_J4knc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFScmVkN3VTZ0wu/anBn',
           price: 199.99,
           category: 'Ceiling Fan',
-          colors: ['White', 'Brown', 'Black'],
+          colors: ['Gold', 'Black', 'Brown'],
           sizes: ['Small', 'Medium', 'Large'],
           inventory: 45,
           description: 'High-performance ceiling fan with LED lighting and remote control.'
