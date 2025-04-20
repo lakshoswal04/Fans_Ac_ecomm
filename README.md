@@ -4,36 +4,41 @@ A modern e-commerce platform for cooling products, featuring a responsive UI bui
 
 -User Dashboard
 
-![image](https://github.com/user-attachments/assets/c09c673e-11c2-4560-b757-73ccafcf9790)
+![image](https://github.com/user-attachments/assets/4ca373c3-a238-450f-a393-6610a7da1a36)
 
-![image](https://github.com/user-attachments/assets/7ce04aac-9523-495a-aba4-da1e3ef9d44a)
+![image](https://github.com/user-attachments/assets/8276786e-5ac1-440c-a9a7-c6d034c4e591)
 
-![image](https://github.com/user-attachments/assets/3caddc12-f8f0-4c0a-8682-788712a462f9)
+![image](https://github.com/user-attachments/assets/f3011c38-8cb4-4033-bc7f-e51f66bf471a)
 
-![image](https://github.com/user-attachments/assets/698edd75-b029-492f-85fe-8a5cab4f84b5)
+![image](https://github.com/user-attachments/assets/651ca9b2-3296-416f-b7f3-84bf7412a9b6)
 
-![image](https://github.com/user-attachments/assets/51fd6e92-44bc-46dc-982e-0ed5a29c0e77)
+![image](https://github.com/user-attachments/assets/1ea8e418-d0fd-4b06-ad51-97801db3008e)
 
-![image](https://github.com/user-attachments/assets/0f7b5319-fe00-470b-b2b1-81bd6030753c)
+![image](https://github.com/user-attachments/assets/4dd13c0e-3228-4eda-8748-d4662694c8f4)
 
-![image](https://github.com/user-attachments/assets/89c8133d-e1f3-4223-bd79-77cfc927cd9c)
+![image](https://github.com/user-attachments/assets/88a47c1d-b10b-45be-a727-d8b542818635)
+
+-Sign in and Sign up Page
+
+![image](https://github.com/user-attachments/assets/f160e696-8627-4c6a-b6b3-a8b96b6a78cb)
+
+![image](https://github.com/user-attachments/assets/ddce14fa-7567-42ba-853c-d5eea06e5974)
 
 -Admin Dashboard
 
-![image](https://github.com/user-attachments/assets/f71314ff-0cbf-4bb2-8130-26270ad150a2)
+![image](https://github.com/user-attachments/assets/da0ec0fd-58c3-41e0-bdde-541dd58353fe)
 
-![image](https://github.com/user-attachments/assets/4931f184-d297-4488-9d02-c36c9e466154)
+![image](https://github.com/user-attachments/assets/ae1722a3-f436-4a5c-acf5-68881b2af370)
 
-![image](https://github.com/user-attachments/assets/e40513e4-4a5d-423c-ac23-2ee7eae98726)
+![image](https://github.com/user-attachments/assets/d22e64d9-d993-4226-9aae-986a4f33c227)
 
 -Rider Dashboard
 
-![image](https://github.com/user-attachments/assets/df2be329-3938-4f06-bc05-6ba32e73db15)
+![image](https://github.com/user-attachments/assets/6cdb2bbe-ac18-4082-9a60-f10ad82f6f35)
 
-![image](https://github.com/user-attachments/assets/57f16c15-a5b9-47a6-ae7e-46fe11951b40)
+![image](https://github.com/user-attachments/assets/69c6220d-83db-44a5-8ea7-7c01cddd17bf)
 
-![image](https://github.com/user-attachments/assets/159fff3f-3939-4716-82ec-a085f23261c7)
-
+![image](https://github.com/user-attachments/assets/56a41d57-75d1-44d6-962a-e2a35bfde63c)
 
  Architecture
 
@@ -90,4 +95,4 @@ User Roles
 - Rider: Manage assigned deliveries, update delivery status
 
 - Demo Video link
-- https://drive.google.com/file/d/1mVj2JhkOnsbf3oe-djhYZsAOlJ6xgByG/view?usp=sharing
+
