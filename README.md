@@ -1,3 +1,10 @@
+-Deployed Website link
+https://coolbreeze1.vercel.app/
+
+- Demo Video link
+- https://drive.google.com/file/d/1HkxFrXS1xwReIoX_e45tLcmRkHGTdAgm/view?usp=sharing
+
+
 CoolBreeze - Fans & AC E-commerce Platform
 
 A modern e-commerce platform for cooling products, featuring a responsive UI built with React and a robust Node.js backend.
@@ -94,5 +101,7 @@ User Roles
 - Admin: Manage products, view all orders, assign riders
 - Rider: Manage assigned deliveries, update delivery status
 
-- Demo Video link
+
+
+
 
