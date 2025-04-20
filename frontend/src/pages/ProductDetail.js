@@ -32,41 +32,61 @@ const ProductDetail = () => {
         const productsData = [
           {
             id: 1,
-          name: 'Premium Ceiling Fan',
-          images: [
+            name: 'Premium Ceiling Fan',
+            images: [
               'https://imgs.search.brave.com/hHyvBOsh_msIAdfKXhsvKksKhWPw38KRNfPUD_J4knc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFScmVkN3VTZ0wu/anBn',
-          ],
-          price: 129.99,
-          rating: 4.8,
-          reviewCount: 124,
-          category: 'Ceiling Fans',
+            ],
+            price: 129.99,
+            rating: 4.8,
+            reviewCount: 2,
+            category: 'Ceiling Fans',
             colors: ['Gold', 'Black', 'Brown'],
             colorImages: {
               'Gold': 'https://imgs.search.brave.com/hHyvBOsh_msIAdfKXhsvKksKhWPw38KRNfPUD_J4knc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFScmVkN3VTZ0wu/anBn',
               'Black': 'https://imgs.search.brave.com/2JbFvs8fdZvBS-vZrx6926Fk4UdrV8EdXODUpabA_qo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDFQNEo2ZVRtUkwu/anBn',
               'Brown': 'https://imgs.search.brave.com/z6Kle_B1r-eoPE0sZxZYflap7N5LZHg9sDM7Et4A67U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbWJy/b2NpYS5jb20vaW1h/Z2UvY2FjaGUvY2F0/YWxvZy9wcm9kdWN0/cy81MDYvaW5zaWdo/dC1nMS02MDB4NjAw/LmpwZw'
             },
-          sizes: ['Small', 'Medium', 'Large'],
-          description: 'Our Premium Ceiling Fan combines elegant design with powerful performance. With its energy-efficient motor and remote control operation, it provides exceptional airflow while reducing your energy costs. The fan includes LED lighting with adjustable brightness, making it a perfect addition to any room in your home.',
-          features: [
-            'Energy-efficient DC motor',
-            'Remote control included',
-            'Adjustable LED lighting',
-            '3 speed settings',
-            'Reversible motor for summer and winter use',
-            'Ultra-quiet operation',
-          ],
-          specifications: {
-            'Blade Span': '52 inches',
-            'Motor Type': 'DC Motor',
-            'Number of Blades': '4',
-            'Speeds': '3',
-            'Lighting': 'Dimmable LED',
-            'Power': '35W',
-            'Airflow': '5200 CFM',
-            'Warranty': '5 years',
-          },
-          stockCount: 15,
+            sizes: ['Small', 'Medium', 'Large'],
+            description: 'Our Premium Ceiling Fan combines elegant design with powerful performance. With its energy-efficient motor and remote control operation, it provides exceptional airflow while reducing your energy costs. The fan includes LED lighting with adjustable brightness, making it a perfect addition to any room in your home.',
+            features: [
+              'Energy-efficient DC motor',
+              'Remote control included',
+              'Adjustable LED lighting',
+              '3 speed settings',
+              'Reversible motor for summer and winter use',
+              'Ultra-quiet operation',
+            ],
+            specifications: {
+              'Blade Span': '52 inches',
+              'Motor Type': 'DC Motor',
+              'Number of Blades': '4',
+              'Speeds': '3',
+              'Lighting': 'Dimmable LED',
+              'Power': '35W',
+              'Airflow': '5200 CFM',
+              'Warranty': '5 years',
+            },
+            stockCount: 15,
+            reviews: [
+              {
+                id: 101,
+                userName: 'James Wilson',
+                rating: 5,
+                date: '2023-08-15',
+                title: 'Excellent quality and performance',
+                comment: 'I am extremely satisfied with this ceiling fan. The gold finish is stunning and exactly as pictured. Installation was straightforward, and the remote control works perfectly. It provides excellent airflow even on the lowest setting and is remarkably quiet. Highly recommend!',
+                isVerified: true
+              },
+              {
+                id: 102,
+                userName: 'Sarah Miller',
+                rating: 4,
+                date: '2023-09-22',
+                title: 'Beautiful design, works great',
+                comment: 'This fan looks fantastic in our living room. The LED light is bright enough and has nice dimming options. I only wish the remote had more features, but overall very happy with the purchase.',
+                isVerified: true
+              }
+            ],
           },
           {
             id: 2,
@@ -76,7 +96,27 @@ const ProductDetail = () => {
             ],
             price: 549.99,
             rating: 4.9,
-            reviewCount: 87,
+            reviewCount: 2,
+            reviews: [
+              {
+                id: 201,
+                userName: 'Robert Johnson',
+                rating: 5,
+                date: '2023-10-05',
+                title: 'Best AC I have ever purchased',
+                comment: 'This inverter AC has exceeded my expectations. It cools the room rapidly and maintains a consistent temperature. The energy efficiency is remarkable - my electricity bill has noticeably decreased. The sleep mode is perfect for nighttime use and the wifi connectivity makes it easy to control from anywhere.',
+                isVerified: true
+              },
+              {
+                id: 202,
+                userName: 'Emily Chen',
+                rating: 5,
+                date: '2023-09-18',
+                title: 'Whisper quiet and efficient',
+                comment: 'I was surprised by how quiet this AC is even on the highest setting. The installation was professional and quick. The air quality has improved significantly, and the smart features work perfectly with my home automation system. Definitely worth the investment.',
+                isVerified: true
+              }
+            ],
             category: 'Air Conditioners',
             colors: ['White'],
             colorImages: {
@@ -112,7 +152,27 @@ const ProductDetail = () => {
             ],
             price: 89.99,
             rating: 4.5,
-            reviewCount: 156,
+            reviewCount: 2,
+            reviews: [
+              {
+                id: 301,
+                userName: 'Michael Adams',
+                rating: 4,
+                date: '2023-07-12',
+                title: 'Great value for the price',
+                comment: "This tower fan is perfect for my apartment. It is slim and takes up minimal space but provides excellent airflow. The remote control is convenient, and I appreciate the various speed settings. The oscillation covers a wide area. It is not the quietest on the highest setting, but overall I am very satisfied.",
+                isVerified: true
+              },
+              {
+                id: 302,
+                userName: 'Jessica Lee',
+                rating: 5,
+                date: '2023-08-03',
+                title: 'Sleek design, powerful airflow',
+                comment: 'I love the modern look of this tower fan - it blends perfectly with my decor. Assembly was straightforward and took less than 10 minutes. The timer function is handy for nighttime use, and it is quiet enough not to disturb sleep. The black color option looks much better in person than in the photos.',
+                isVerified: true
+              }
+            ],
             category: 'Fans',
             colors: ['White', 'Black'],
             colorImages: {
@@ -149,7 +209,27 @@ const ProductDetail = () => {
             ],
             price: 399.99,
             rating: 4.7,
-            reviewCount: 92,
+            reviewCount: 2,
+            reviews: [
+              {
+                id: 401,
+                userName: 'Daniel Thompson',
+                rating: 5,
+                date: '2023-06-28',
+                title: 'Smart features work flawlessly',
+                comment: 'The smart functionality of this window AC is impressive. I can control it with my phone and set schedules that align with my routine. It cools my bedroom quickly and efficiently. The installation was more straightforward than I expected, though having a second person definitely helped.',
+                isVerified: true
+              },
+              {
+                id: 402,
+                userName: 'Sophia Garcia',
+                rating: 4,
+                date: '2023-07-14',
+                title: 'Good cooling, some app issues',
+                comment: 'This AC does a great job cooling my home office. The voice control integration with Alexa works well. The only downside is occasional connectivity issues with the app, but a router restart usually fixes it. Energy efficiency is good for a window unit.',
+                isVerified: false
+              }
+            ],
             category: 'Air Conditioners',
             colors: ['White'],
             colorImages: {
@@ -186,7 +266,27 @@ const ProductDetail = () => {
             ],
             price: 179.99,
             rating: 4.6,
-            reviewCount: 108,
+            reviewCount: 2,
+            reviews: [
+              {
+                id: 501,
+                userName: 'Olivia Martinez',
+                rating: 5,
+                date: '2023-05-19',
+                title: 'Gorgeous addition to our dining room',
+                comment: 'The white decorative ceiling fan has transformed our dining area. It is not just functional but a statement piece that guests always comment on. The lighting is warm and creates a perfect ambiance for dinner parties. Installation took about an hour, but the results are well worth it.',
+                isVerified: true
+              },
+              {
+                id: 502,
+                userName: 'William Brown',
+                rating: 4,
+                date: '2023-06-05',
+                title: 'Beautiful design, decent airflow',
+                comment: 'I purchased the brown version for my living room with vaulted ceilings. The wood finish is rich and elegant. The airflow is good but not as powerful as some standard fans, which is the trade-off for the decorative design. Overall, I am pleased with the purchase and the quality feels substantial.',
+                isVerified: true
+              }
+            ],
             category: 'Fans',
             colors: ['White', 'Brown'],
             colorImages: {
@@ -223,7 +323,27 @@ const ProductDetail = () => {
             ],
             price: 329.99,
             rating: 4.3,
-            reviewCount: 75,
+            reviewCount: 2,
+            reviews: [
+              {
+                id: 601,
+                userName: 'Thomas Wilson',
+                rating: 4,
+                date: '2023-08-24',
+                title: 'Effective for small rooms',
+                comment: "I got the black model for my home office which is about 300 sq ft, and it cools the space effectively. The portability is convenient - I can move it to the bedroom at night. The only downside is that it is a bit louder than I expected, but the cooling performance makes up for it.",
+                isVerified: true
+              },
+              {
+                id: 602,
+                userName: 'Amanda Davis',
+                rating: 5,
+                date: '2023-07-30',
+                title: 'Green color is beautiful, works great',
+                comment: 'I love the green color option - it is unique and adds character to my room. Setup was easy with the included window kit. The digital controls are intuitive, and the remote is handy. It cools my bedroom quickly, and the dehumidifier function has been excellent during humid days. Very happy with this purchase!',
+                isVerified: true
+              }
+            ],
             category: 'Air Conditioners',
             colors: ['Black', 'Green'],
             colorImages: {
@@ -260,7 +380,8 @@ const ProductDetail = () => {
             ],
             price: 49.99,
             rating: 4.4,
-            reviewCount: 203,
+            reviewCount: 0,
+            reviews: [],
             category: 'Fans',
             colors: ['White', 'Black'],
             colorImages: {
@@ -298,7 +419,8 @@ const ProductDetail = () => {
             ],
             price: 159.99,
             rating: 4.7,
-            reviewCount: 68,
+            reviewCount: 0,
+            reviews: [],
             category: 'Fans',
             colors: ['Black'],
             colorImages: {
@@ -830,11 +952,50 @@ const ProductDetail = () => {
                 </button>
               </div>
               
-              <div className="text-center py-8">
-                <p className="text-gray-600 mb-4">
-                  Review functionality is not implemented in this demo version.
-                </p>
-              </div>
+              {product.reviews && product.reviews.length > 0 ? (
+                <div className="space-y-6">
+                  {product.reviews.map(review => (
+                    <div key={review.id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                      <div className="flex justify-between mb-3">
+                        <div>
+                          <h4 className="font-semibold text-lg">{review.title}</h4>
+                          <div className="flex items-center mt-1">
+                            <div className="flex text-yellow-400 mr-2">
+                              {[...Array(5)].map((_, i) => (
+                                <FaStar key={i} size={14} className={i < review.rating ? 'text-yellow-400' : 'text-gray-300'} />
+                              ))}
+                            </div>
+                            <span className="text-gray-600 text-sm">
+                              {review.isVerified && (
+                                <span className="text-green-600 font-medium mr-2">✓ Verified Purchase</span>
+                              )}
+                              {review.date}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-gray-700">{review.comment}</p>
+                      <div className="mt-3 text-sm text-gray-500">
+                        <span>Review by {review.userName}</span>
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {product.reviewCount > product.reviews.length && (
+                    <div className="text-center py-4">
+                      <button className="text-primary font-medium hover:underline">
+                        Load More Reviews ({product.reviewCount - product.reviews.length} remaining)
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center py-8">
+                  <p className="text-gray-600 mb-4">
+                    No reviews yet. Be the first to review this product!
+                  </p>
+                </div>
+              )}
             </div>
           )}
         </div>
