@@ -58,6 +58,23 @@ const Login = ({ onLogin }) => {
 
         // Call login handler from parent
         onLogin(userData, userData.role);
+        
+        // Check localStorage immediately after setting
+        setTimeout(() => {
+          const storedUserRole = localStorage.getItem('userRole');
+          console.log('Stored user role in localStorage:', storedUserRole);
+          
+          // Force redirect based on role after storage is confirmed
+          if (storedUserRole === 'admin') {
+            console.log('Forced redirect to admin dashboard');
+            window.location.href = '/admin';
+            return;
+          } else if (storedUserRole === 'rider') {
+            console.log('Forced redirect to rider dashboard');
+            window.location.href = '/rider';
+            return;
+          }
+        }, 100);
 
         // Redirect based on role or back to the page they came from
         if (userData.role === 'admin') {

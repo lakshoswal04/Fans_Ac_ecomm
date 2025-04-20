@@ -127,6 +127,13 @@ exports.login = async (req, res) => {
 
     console.log('Login successful for user with role:', user.role);
 
+    // Verify the role specifically for debugging
+    if (user.role === 'admin') {
+      console.log('ADMIN USER AUTHENTICATED - returning admin role explicitly');
+    } else if (user.role === 'rider') {
+      console.log('RIDER USER AUTHENTICATED - returning rider role explicitly');
+    }
+
     // Return response
     res.status(200).json({
       success: true,

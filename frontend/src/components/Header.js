@@ -11,6 +11,8 @@ const Header = ({ user, userRole, onLogout }) => {
   const location = useLocation();
   const { getCartCount, isAuthenticated } = useCart();
   
+  console.log('Header - User role:', userRole, 'Location:', location.pathname);
+  
   const cartCount = isAuthenticated() ? getCartCount() : 0;
   
   // Check if current page is admin or rider dashboard
@@ -19,6 +21,7 @@ const Header = ({ user, userRole, onLogout }) => {
   const isRestrictedDashboard = isAdminDashboard || isRiderDashboard;
 
   const handleLogout = () => {
+    console.log('Logging out user');
     onLogout();
     navigate('/');
     setIsProfileOpen(false);

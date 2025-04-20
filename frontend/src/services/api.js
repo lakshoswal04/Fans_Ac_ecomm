@@ -52,22 +52,29 @@ api.interceptors.response.use(
       
       // Authentication endpoints
       if (url.includes('/auth/login')) {
+        console.log('Using mock login with data:', data);
         return mockLogin(data);
       } else if (url.includes('/auth/register')) {
+        console.log('Using mock register with data:', data);
         return mockRegister(data);
       } else if (url.includes('/auth/google')) {
+        console.log('Using mock Google auth with data:', data);
         return mockGoogleAuth(data);
       } else if (url.includes('/auth/google-test')) {
+        console.log('Using mock Google test auth with data:', data);
         return mockGoogleAuth(data);
       }
       
       // User profile endpoints
       else if (url.includes('/users/profile')) {
         if (method === 'get') {
+          console.log('Using mock get profile');
           return mockGetProfile();
         } else if (method === 'put') {
+          console.log('Using mock update profile with data:', data);
           return mockUpdateProfile(data);
         } else if (method === 'delete') {
+          console.log('Using mock delete profile');
           return mockDeleteProfile();
         }
       }
@@ -82,27 +89,35 @@ function mockLogin(data) {
   
   const { email, password } = data;
   
-  if (email === 'admin@example.com' && password === 'password123') {
+  // First check for admin emails
+  if (email.includes('admin') || email === 'admin@example.com') {
+    console.log('Mock login detected admin email, returning admin role');
     return mockSuccess({
       user: {
         id: 'mock-admin-123',
-        name: 'Test Admin',
-        email: 'admin@example.com',
+        name: email.split('@')[0],
+        email: email,
         role: 'admin'
       },
       token: 'mock-token-admin-123456'
     });
-  } else if (email === 'rider@example.com' && password === 'password123') {
+  } 
+  // Then check for rider emails
+  else if (email.includes('rider') || email === 'rider@example.com') {
+    console.log('Mock login detected rider email, returning rider role');
     return mockSuccess({
       user: {
         id: 'mock-rider-123',
-        name: 'Test Rider',
-        email: 'rider@example.com',
+        name: email.split('@')[0],
+        email: email,
         role: 'rider'
       },
       token: 'mock-token-rider-123456'
     });
-  } else if (email === 'customer@example.com' && password === 'password123') {
+  } 
+  // Then check for example emails
+  else if (email === 'customer@example.com') {
+    console.log('Mock login detected example customer, returning customer role');
     return mockSuccess({
       user: {
         id: 'mock-customer-123',
@@ -112,7 +127,10 @@ function mockLogin(data) {
       },
       token: 'mock-token-customer-123456'
     });
-  } else if (email && password) {
+  } 
+  // For any other valid credentials
+  else if (email && password) {
+    console.log('Mock login with generic email, returning customer role');
     return mockSuccess({
       user: {
         id: 'mock-user-' + Date.now(),
@@ -124,6 +142,7 @@ function mockLogin(data) {
     });
   }
   
+  console.log('Mock login failed with invalid credentials');
   return mockError('Invalid credentials');
 }
 

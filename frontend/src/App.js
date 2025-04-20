@@ -80,8 +80,11 @@ function AppContent() {
   
   // Load user from localStorage on initial render
   useEffect(() => {
+    console.log('Running auth check. Current path:', location.pathname);
     const storedUser = localStorage.getItem('user');
     const storedUserRole = localStorage.getItem('userRole');
+    
+    console.log('Stored user role from localStorage:', storedUserRole);
     
     if (storedUser && storedUserRole) {
       try {
@@ -89,11 +92,15 @@ function AppContent() {
         setUser(userData);
         setUserRole(storedUserRole);
         
-        // Redirect to appropriate dashboard if on home page
-        if (location.pathname === '/' && !isAuthPage) {
+        console.log('User authenticated with role:', storedUserRole);
+        
+        // Always redirect to the appropriate dashboard if the user is at the root path
+        if (location.pathname === '/') {
           if (storedUserRole === 'admin') {
+            console.log('Redirecting authenticated admin to dashboard');
             navigate('/admin');
           } else if (storedUserRole === 'rider') {
+            console.log('Redirecting authenticated rider to dashboard');
             navigate('/rider');
           }
         }
@@ -102,25 +109,33 @@ function AppContent() {
         localStorage.removeItem('user');
         localStorage.removeItem('userRole');
       }
+    } else {
+      console.log('No authenticated user found');
     }
     
     setLoading(false);
-  }, []);
+  }, [location.pathname, navigate]);
   
   // Protected route components
   const ProtectedRoute = ({ children, allowedRoles }) => {
+    console.log('ProtectedRoute check - User role:', userRole, 'Allowed roles:', allowedRoles);
+    
     if (loading) {
+      console.log('ProtectedRoute - Still loading user data');
       return <div className="h-screen flex items-center justify-center">Loading...</div>;
     }
     
     if (!user) {
+      console.log('ProtectedRoute - No user, redirecting to login');
       return <Navigate to="/login" />;
     }
     
     if (allowedRoles && !allowedRoles.includes(userRole)) {
+      console.log(`ProtectedRoute - User role ${userRole} not allowed, redirecting to home`);
       return <Navigate to="/" />;
     }
     
+    console.log('ProtectedRoute - Access granted to', userRole);
     return children;
   };
 
