@@ -20,6 +20,18 @@ const AdminDashboard = () => {
         // In a real app, this would be an API call
         await new Promise(resolve => setTimeout(resolve, 1000));
         
+        // Generate random dates between March 2025 and current date
+        const generateRandomDate = () => {
+          // March 1, 2025
+          const startDate = new Date(2025, 2, 1).getTime();
+          const currentDate = new Date().getTime();
+          
+          // Random timestamp between start date and current date
+          const randomTimestamp = Math.floor(Math.random() * (currentDate - startDate + 1) + startDate);
+          const randomDate = new Date(randomTimestamp);
+          return randomDate.toISOString().split('T')[0];
+        };
+        
         // Mock data
         setStats({
           orders: 156,
@@ -32,7 +44,7 @@ const AdminDashboard = () => {
           {
             id: 'ORD-1001',
             customer: 'John Smith',
-            date: '2023-06-12',
+            date: generateRandomDate(),
             amount: 679.98,
             status: 'Delivered',
             products: ['Premium Ceiling Fan', 'Tower Fan']
@@ -40,7 +52,7 @@ const AdminDashboard = () => {
           {
             id: 'ORD-1002',
             customer: 'Emily Johnson',
-            date: '2023-06-11',
+            date: generateRandomDate(),
             amount: 549.99,
             status: 'Shipped',
             products: ['Inverter Split AC']
@@ -48,7 +60,7 @@ const AdminDashboard = () => {
           {
             id: 'ORD-1003',
             customer: 'Michael Brown',
-            date: '2023-06-10',
+            date: generateRandomDate(),
             amount: 129.99,
             status: 'Paid',
             products: ['Premium Ceiling Fan']
@@ -56,7 +68,7 @@ const AdminDashboard = () => {
           {
             id: 'ORD-1004',
             customer: 'Sarah Wilson',
-            date: '2023-06-09',
+            date: generateRandomDate(),
             amount: 479.97,
             status: 'Delivered',
             products: ['Table Fan', 'Window AC']
@@ -64,7 +76,7 @@ const AdminDashboard = () => {
           {
             id: 'ORD-1005',
             customer: 'David Lee',
-            date: '2023-06-08',
+            date: generateRandomDate(),
             amount: 1099.98,
             status: 'Shipped',
             products: ['Inverter Split AC', 'Smart Window AC']

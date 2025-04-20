@@ -22,6 +22,18 @@ const RiderDashboard = () => {
         // In a real app, this would be an API call
         await new Promise(resolve => setTimeout(resolve, 1000));
         
+        // Generate random dates between March 2025 and current date
+        const generateRandomDate = () => {
+          // March 1, 2025
+          const startDate = new Date(2025, 2, 1).getTime();
+          const currentDate = new Date().getTime();
+          
+          // Random timestamp between start date and current date
+          const randomTimestamp = Math.floor(Math.random() * (currentDate - startDate + 1) + startDate);
+          const randomDate = new Date(randomTimestamp);
+          return randomDate.toISOString().split('T')[0];
+        };
+        
         // Mock data
         setStats({
           assigned: 3,
@@ -37,7 +49,7 @@ const RiderDashboard = () => {
             address: '456 Oak Ave, Somewhere, NY 67890',
             contact: '(555) 987-6543',
             email: 'emily.j@example.com',
-            date: '2023-06-11',
+            date: generateRandomDate(),
             status: 'Shipped',
             items: [
               { name: 'Inverter Split AC', price: 549.99, quantity: 1, color: 'White', size: '1.5 Ton' }
@@ -49,7 +61,7 @@ const RiderDashboard = () => {
             address: '246 Maple Dr, Anywhere, WA 97531',
             contact: '(555) 234-5678',
             email: 'david.lee@example.com',
-            date: '2023-06-08',
+            date: generateRandomDate(),
             status: 'Shipped',
             items: [
               { name: 'Inverter Split AC', price: 549.99, quantity: 2, color: 'White', size: '2 Ton' }
@@ -61,7 +73,7 @@ const RiderDashboard = () => {
             address: '789 Birch Blvd, Sometown, CA 12345',
             contact: '(555) 876-5432',
             email: 'amanda.w@example.com',
-            date: '2023-06-13',
+            date: generateRandomDate(),
             status: 'Shipped',
             items: [
               { name: 'Premium Ceiling Fan', price: 129.99, quantity: 1, color: 'Black', size: 'Medium' },
