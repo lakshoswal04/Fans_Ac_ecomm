@@ -628,6 +628,24 @@ const ProductDetail = () => {
     navigate('/checkout');
   };
   
+  // Helper function to map color names to their CSS color values
+  const getColorValue = (colorName) => {
+    if (!colorName) return '';
+    
+    const colorMap = {
+      'black': '#000000',
+      'white': '#ffffff',
+      'brown': '#a52a2a',
+      'gold': '#ffd700',
+      'green': '#008000',
+      // Add more color mappings as needed
+    };
+    
+    // Do a case-insensitive lookup
+    const normalizedColor = colorName.toLowerCase();
+    return colorMap[normalizedColor] || normalizedColor;
+  };
+  
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-12 flex justify-center">
@@ -737,7 +755,7 @@ const ProductDetail = () => {
                   className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition ${
                     selectedColor === color ? 'border-primary' : 'border-transparent'
                   }`}
-                  style={{ backgroundColor: color.toLowerCase() }}
+                  style={{ backgroundColor: getColorValue(color) }}
                   title={color}
                 >
                   {selectedColor === color && (
