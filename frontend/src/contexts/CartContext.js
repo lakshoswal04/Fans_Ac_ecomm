@@ -8,31 +8,41 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartInitialized, setCartInitialized] = useState(false);
   
+  // Check if user is logged in
+  const isAuthenticated = () => {
+    return localStorage.getItem('user') !== null;
+  };
+  
   // Load cart from localStorage on component mount
   useEffect(() => {
-    try {
-      const savedCart = localStorage.getItem('cart');
-      if (savedCart) {
-        const parsedCart = JSON.parse(savedCart);
-        // Validate cart data is an array
-        if (Array.isArray(parsedCart)) {
-          setCart(parsedCart);
-        } else {
-          console.error('Invalid cart data format, resetting cart');
-          localStorage.removeItem('cart');
+    // Only load cart if user is authenticated
+    if (isAuthenticated()) {
+      try {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+          const parsedCart = JSON.parse(savedCart);
+          // Validate cart data is an array
+          if (Array.isArray(parsedCart)) {
+            setCart(parsedCart);
+          } else {
+            console.error('Invalid cart data format, resetting cart');
+            localStorage.removeItem('cart');
+          }
         }
+      } catch (error) {
+        console.error('Error loading cart from localStorage:', error);
+        localStorage.removeItem('cart');
       }
-    } catch (error) {
-      console.error('Error loading cart from localStorage:', error);
-      localStorage.removeItem('cart');
-    } finally {
-      setCartInitialized(true);
+    } else {
+      // Clear cart if not authenticated
+      setCart([]);
     }
+    setCartInitialized(true);
   }, []);
   
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    if (cartInitialized) {
+    if (cartInitialized && isAuthenticated()) {
       try {
         localStorage.setItem('cart', JSON.stringify(cart));
       } catch (error) {
@@ -43,6 +53,11 @@ export const CartProvider = ({ children }) => {
   
   // Add product to cart
   const addToCart = useCallback((product) => {
+    if (!isAuthenticated()) {
+      console.warn('Cannot add to cart: User not authenticated');
+      return;
+    }
+    
     if (!product || !product.id) {
       console.error('Invalid product:', product);
       return;
@@ -82,11 +97,21 @@ export const CartProvider = ({ children }) => {
   
   // Remove product from cart
   const removeFromCart = useCallback((productId) => {
+    if (!isAuthenticated()) {
+      console.warn('Cannot remove from cart: User not authenticated');
+      return;
+    }
+    
     setCart(prevCart => prevCart.filter(item => item.id !== productId));
   }, []);
   
   // Update product quantity
   const updateQuantity = useCallback((productId, quantity) => {
+    if (!isAuthenticated()) {
+      console.warn('Cannot update cart: User not authenticated');
+      return;
+    }
+    
     if (!productId) {
       console.error('Invalid product ID');
       return;
@@ -121,6 +146,10 @@ export const CartProvider = ({ children }) => {
   
   // Get total number of items in cart
   const getCartCount = useCallback(() => {
+    // Only return cart count if user is authenticated
+    if (!isAuthenticated()) {
+      return 0;
+    }
     return cart.reduce((total, item) => total + (item.quantity || 0), 0);
   }, [cart]);
   
@@ -146,7 +175,8 @@ export const CartProvider = ({ children }) => {
     clearCart,
     getCartCount,
     getCartTotal,
-    isCartEmpty
+    isCartEmpty,
+    isAuthenticated
   };
   
   return (

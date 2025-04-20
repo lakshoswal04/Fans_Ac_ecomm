@@ -181,17 +181,17 @@ const ProductDetail = () => {
             id: 5,
             name: 'Decorative Ceiling Fan',
             images: [
-              'https://www.istockphoto.com/photos/ceiling-fan',
+              'https://imgs.search.brave.com/vdC4n_2-mRy-PJEelBUbFYnTOhnWPc_SN1TjKZ_ycS4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tb29v/bmkuY29tL2Nkbi9z/aG9wL3Byb2R1Y3Rz/LzFfNDE0MzRiYmIt/NjRjYy00ZTdlLTk2/MWUtMWZkNTU5ODNk/MzlhXzYwMHguanBn/P3Y9MTY0ODU2MTU5/Ng',
+              'https://imgs.search.brave.com/4jfcb7uv6bJwguMv7YQUTk9n8sr9kI0wGD40rf4aItk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/d2hpdGV0ZWFrLmNv/bS9tZWRpYS9jYXRh/bG9nL3Byb2R1Y3Qv/Yy9mL2NmOS0xMDAw/NV8yNV8uanBnP29w/dGltaXplPW1lZGl1/bSZmaXQ9Ym91bmRz/JmhlaWdodD00NTAm/d2lkdGg9NDUwJmNh/bnZhcz00NTA6NDUw'
             ],
             price: 179.99,
             rating: 4.6,
             reviewCount: 108,
             category: 'Fans',
-            colors: ['White', 'Bronze', 'Brown'],
+            colors: ['White', 'Brown'],
             colorImages: {
-              'White': 'https://www.istockphoto.com/photos/ceiling-fan',
-              'Bronze': 'https://images.unsplash.com/photo-1695622447624-75cdbce7abe0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-              'Brown': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJIJ5PzUVBP1P6jyaZwkaIepgH32pDMPnbQgn_TikvAGYgrSfGyzmWBSpMPL3Kw_C1-ZU&usqp=CAU'
+              'White': 'https://imgs.search.brave.com/vdC4n_2-mRy-PJEelBUbFYnTOhnWPc_SN1TjKZ_ycS4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tb29v/bmkuY29tL2Nkbi9z/aG9wL3Byb2R1Y3Rz/LzFfNDE0MzRiYmIt/NjRjYy00ZTdlLTk2/MWUtMWZkNTU5ODNk/MzlhXzYwMHguanBn/P3Y9MTY0ODU2MTU5/Ng',
+              'Brown': 'https://imgs.search.brave.com/4jfcb7uv6bJwguMv7YQUTk9n8sr9kI0wGD40rf4aItk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/d2hpdGV0ZWFrLmNv/bS9tZWRpYS9jYXRh/bG9nL3Byb2R1Y3Qv/Yy9mL2NmOS0xMDAw/NV8yNV8uanBnP29w/dGltaXplPW1lZGl1/bSZmaXQ9Ym91bmRz/JmhlaWdodD00NTAm/d2lkdGg9NDUwJmNh/bnZhcz00NTA6NDUw'
             },
             sizes: ['Medium', 'Large'],
             description: 'Enhance your home décor with our Decorative Ceiling Fan featuring elegant wooden blades and antique-style finishes. This fan combines style with functionality, providing excellent air circulation while serving as a beautiful centerpiece for any room. The included light fixture adds ambient lighting to complete the look.',

@@ -71,11 +71,11 @@ const Home = () => {
           {
             id: 5,
             name: 'Decorative Ceiling Fan',
-            image: 'https://www.istockphoto.com/photos/ceiling-fan',
+            image: 'https://imgs.search.brave.com/vdC4n_2-mRy-PJEelBUbFYnTOhnWPc_SN1TjKZ_ycS4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tb29v/bmkuY29tL2Nkbi9z/aG9wL3Byb2R1Y3Rz/LzFfNDE0MzRiYmIt/NjRjYy00ZTdlLTk2/MWUtMWZkNTU5ODNk/MzlhXzYwMHguanBn/P3Y9MTY0ODU2MTU5/Ng',
             price: 179.99,
             rating: 4.6,
             category: 'Ceiling Fans',
-            colors: ['White', 'Bronze', 'Brown'],
+            colors: ['White', 'Brown'],
             sizes: ['Medium', 'Large'],
             description: 'Elegant decorative ceiling fan with wooden blades and light fixture.'
           },

@@ -139,10 +139,10 @@ const Header = ({ user, userRole, onLogout }) => {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                            <FaShoppingCart className="mr-2 text-primary" />
+                            <FaShoppingCart className="mr-3 text-primary" />
                             <span>My Cart</span>
                           </div>
-                          {cartCount > 0 && (
+                          {user && cartCount > 0 && (
                             <span className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">
                               {cartCount} items
                             </span>
@@ -278,7 +278,7 @@ const Header = ({ user, userRole, onLogout }) => {
                         <FaShoppingCart className="mr-3 text-primary" />
                         <span>My Cart</span>
                       </div>
-                      {cartCount > 0 && (
+                      {user && cartCount > 0 && (
                         <span className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">
                           {cartCount} items
                         </span>
