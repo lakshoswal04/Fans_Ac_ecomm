@@ -101,11 +101,11 @@ const ProductListing = () => {
           {
             id: 7,
             name: 'Table Fan',
-            image: 'https://shop.bajajelectricals.com/cdn/shop/files/252061NEOSPECTRUMTABLE1.832.jpg?v=1727079035',
+            image: 'https://kitchenmart.co.in/cdn/shop/files/71jTaNjcdFL.jpg?v=1712122898',
             price: 49.99,
             rating: 4.4,
             category: 'Fans',
-            colors: ['White', 'Black', 'Blue'],
+            colors: ['White', 'Black'],
             sizes: ['Small', 'Medium'],
             description: 'Compact table fan with adjustable height and tilt function.'
           },
@@ -116,7 +116,7 @@ const ProductListing = () => {
             price: 79.99,
             rating: 4.7,
             category: 'Fans',
-            colors: ['Black', 'Silver'],
+            colors: ['Black'],
             sizes: ['Large', 'Extra Large'],
             description: 'Heavy-duty industrial fan for workshops, garages, and large spaces.'
           },
@@ -156,33 +156,52 @@ const ProductListing = () => {
   useEffect(() => {
     if (products.length === 0) return;
     
+    // Start with full product list
     let result = [...products];
+    console.log('Starting filter with', result.length, 'products');
     
     // Apply category filter
     if (filters.category) {
-      // Only two main categories: Fans and Air Conditioners
+      console.log('Filtering by category:', filters.category);
       result = result.filter(product => product.category === filters.category);
+      console.log('After category filter:', result.length, 'products remain');
     }
     
     // Apply price range filter
     if (filters.priceRange) {
+      console.log('Filtering by price range:', filters.priceRange);
       const [min, max] = filters.priceRange.split('-').map(Number);
       result = result.filter(product => product.price >= min && (max ? product.price <= max : true));
+      console.log('After price filter:', result.length, 'products remain');
     }
     
     // Apply color filter
     if (filters.color) {
-      result = result.filter(product => product.colors.includes(filters.color));
+      console.log('Filtering by color:', filters.color);
+      
+      // Debug what products have this color in the original list
+      const colorProducts = products.filter(product => 
+        product.colors.some(color => color.toLowerCase() === filters.color.toLowerCase())
+      );
+      console.log('Products with color', filters.color, ':', colorProducts.map(p => p.name).join(', '));
+      
+      // Apply the filter case-insensitively
+      result = result.filter(product => 
+        product.colors.some(color => color.toLowerCase() === filters.color.toLowerCase())
+      );
+      console.log('After color filter:', result.length, 'products remain:', result.map(p => p.name).join(', '));
     }
     
     // Apply size filter
     if (filters.size) {
-      result = result.filter(product => product.sizes.includes(filters.size));
+      console.log('Filtering by size:', filters.size);
+      result = result.filter(product => 
+        product.sizes.some(size => size.toLowerCase() === filters.size.toLowerCase())
+      );
+      console.log('After size filter:', result.length, 'products remain');
     }
     
-    console.log('Filters applied:', filters);
-    console.log('Filtered products:', result);
-    
+    console.log('Final filters applied:', filters);
     setFilteredProducts(result);
   }, [filters, products]);
   
@@ -196,6 +215,12 @@ const ProductListing = () => {
       } else {
         navigate('');
       }
+    }
+    
+    // Additional logging for color filter
+    if (filterName === 'color') {
+      console.log('Setting color filter to:', value);
+      console.log('Color option clicked:', value);
     }
     
     // Update filter state
@@ -257,6 +282,24 @@ const ProductListing = () => {
     
     // Show toast notification
     showToast(`${product.name} added to cart!`, 'cart');
+  };
+  
+  // Helper function to map color names to their CSS color values
+  const getColorValue = (colorName) => {
+    if (!colorName) return '';
+    
+    const colorMap = {
+      'black': '#000000',
+      'white': '#ffffff',
+      'brown': '#a52a2a',
+      'gold': '#ffd700',
+      'green': '#008000',
+      // Add more color mappings as needed
+    };
+    
+    // Do a case-insensitive lookup
+    const normalizedColor = colorName.toLowerCase();
+    return colorMap[normalizedColor] || normalizedColor;
   };
   
   return (
@@ -351,18 +394,29 @@ const ProductListing = () => {
             {/* Colors */}
             <div className="mb-4">
               <h3 className="font-medium mb-2">Colors</h3>
-              <select
-                value={filters.color}
-                onChange={(e) => handleFilterChange('color', e.target.value)}
-                className="w-full border rounded-md p-2"
-              >
-                <option value="">All Colors</option>
-                {colors.map((color) => (
-                  <option key={color} value={color}>
-                    {color}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={filters.color}
+                  onChange={(e) => handleFilterChange('color', e.target.value)}
+                  className="w-full border rounded-md p-2 pl-8"
+                >
+                  <option value="">All Colors</option>
+                  {colors.map((color) => (
+                    <option key={color} value={color}>
+                      {color}
+                    </option>
+                  ))}
+                </select>
+                {filters.color && (
+                  <div 
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full"
+                    style={{
+                      backgroundColor: getColorValue(filters.color),
+                      border: filters.color.toLowerCase() === 'white' ? '1px solid #ddd' : 'none'
+                    }}
+                  ></div>
+                )}
+              </div>
             </div>
             
             {/* Sizes */}
@@ -518,7 +572,7 @@ const ProductListing = () => {
                     <span
                       className="w-4 h-4 rounded-full mr-2"
                       style={{
-                        backgroundColor: color.toLowerCase(),
+                        backgroundColor: getColorValue(color),
                         border: color.toLowerCase() === 'white' ? '1px solid #ddd' : 'none'
                       }}
                     ></span>
@@ -601,7 +655,7 @@ const ProductListing = () => {
                   <span
                     className="w-3 h-3 rounded-full mr-1"
                     style={{
-                      backgroundColor: filters.color.toLowerCase(),
+                      backgroundColor: getColorValue(filters.color),
                       border: filters.color.toLowerCase() === 'white' ? '1px solid #ddd' : 'none'
                     }}
                   ></span>
@@ -709,7 +763,7 @@ const ProductListing = () => {
                         <span
                           key={index}
                           className="w-5 h-5 rounded-full inline-block border border-gray-200"
-                          style={{ backgroundColor: color.toLowerCase() }}
+                          style={{ backgroundColor: getColorValue(color) }}
                           title={color}
                         ></span>
                       ))}

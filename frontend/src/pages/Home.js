@@ -93,11 +93,11 @@ const Home = () => {
           {
             id: 7,
             name: 'Table Fan',
-            image: 'https://shop.bajajelectricals.com/cdn/shop/files/252061NEOSPECTRUMTABLE1.832.jpg?v=1727079035',
+            image: 'https://kitchenmart.co.in/cdn/shop/files/71jTaNjcdFL.jpg?v=1712122898',
             price: 49.99,
             rating: 4.4,
             category: 'Table Fans',
-            colors: ['White', 'Black', 'Blue'],
+            colors: ['White', 'Black'],
             sizes: ['Small', 'Medium'],
             description: 'Compact table fan with adjustable height and tilt function.'
           },
@@ -108,7 +108,7 @@ const Home = () => {
             price: 159.99,
             rating: 4.7,
             category: 'Industrial Fans',
-            colors: ['Black', 'Silver'],
+            colors: ['Black'],
             sizes: ['Large', 'Extra Large'],
             description: 'Heavy-duty industrial fan for workshops, garages, and large spaces.'
           },

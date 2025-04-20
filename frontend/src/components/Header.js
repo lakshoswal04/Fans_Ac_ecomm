@@ -9,9 +9,9 @@ const Header = ({ user, userRole, onLogout }) => {
   const profileRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const { getCartCount } = useCart();
+  const { getCartCount, isAuthenticated } = useCart();
   
-  const cartCount = getCartCount();
+  const cartCount = isAuthenticated() ? getCartCount() : 0;
   
   // Check if current page is admin or rider dashboard
   const isAdminDashboard = location.pathname.startsWith('/admin');
@@ -90,7 +90,7 @@ const Header = ({ user, userRole, onLogout }) => {
             <div className="flex items-center pl-4 space-x-3 ml-4 border-l border-gray-200">
               <Link to="/cart" className="text-gray-700 hover:text-primary transition relative p-2 rounded-full hover:bg-primary/5">
                 <FaShoppingCart size={20} />
-                {user && cartCount > 0 && (
+                {isAuthenticated() && cartCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-accent text-white text-xs w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
                     {cartCount}
                   </span>
@@ -142,7 +142,7 @@ const Header = ({ user, userRole, onLogout }) => {
                             <FaShoppingCart className="mr-3 text-primary" />
                             <span>My Cart</span>
                           </div>
-                          {user && cartCount > 0 && (
+                          {isAuthenticated() && cartCount > 0 && (
                             <span className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">
                               {cartCount} items
                             </span>
@@ -278,7 +278,7 @@ const Header = ({ user, userRole, onLogout }) => {
                         <FaShoppingCart className="mr-3 text-primary" />
                         <span>My Cart</span>
                       </div>
-                      {user && cartCount > 0 && (
+                      {isAuthenticated() && cartCount > 0 && (
                         <span className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">
                           {cartCount} items
                         </span>

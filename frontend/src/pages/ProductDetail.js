@@ -256,17 +256,17 @@ const ProductDetail = () => {
             id: 7,
             name: 'Table Fan',
             images: [
-              'https://shop.bajajelectricals.com/cdn/shop/files/252061NEOSPECTRUMTABLE1.832.jpg?v=1727079035',
+              'https://kitchenmart.co.in/cdn/shop/files/71jTaNjcdFL.jpg?v=1712122898'
             ],
             price: 49.99,
             rating: 4.4,
             reviewCount: 203,
             category: 'Fans',
-            colors: ['White', 'Black', 'Blue'],
+            colors: ['White', 'Black'],
             colorImages: {
-              'White': 'https://shop.bajajelectricals.com/cdn/shop/files/252061NEOSPECTRUMTABLE1.832.jpg?v=1727079035',
-              'Black': 'https://kitchenmart.co.in/cdn/shop/files/71jTaNjcdFL.jpg?v=1712122898',
-              'Blue': 'https://images.unsplash.com/photo-1588854337270-4d9d1c425118?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+              'White': 'https://kitchenmart.co.in/cdn/shop/files/71jTaNjcdFL.jpg?v=1712122898',
+              'Black': 'https://shop.bajajelectricals.com/cdn/shop/files/252061NEOSPECTRUMTABLE1.832.jpg?v=1727079035',
+              
             },
             sizes: ['Small', 'Medium'],
             description: 'The Table Fan offers personal cooling with adjustable height and tilt features. Perfect for desks, bedside tables, or countertops, it provides directed airflow exactly where you need it. The compact design saves space while still delivering powerful cooling performance.',
@@ -300,10 +300,9 @@ const ProductDetail = () => {
             rating: 4.7,
             reviewCount: 68,
             category: 'Fans',
-            colors: ['Black', 'Silver'],
+            colors: ['Black'],
             colorImages: {
               'Black': 'https://mobileimages.lowes.com/productimages/696f2c1f-8c4f-4b45-9000-2b45ef366a1f/63180555.jpg?size=pdhism',
-              'Silver': 'https://images.unsplash.com/photo-1594756202590-2351352dbc22?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
             },
             sizes: ['Large', 'Extra Large'],
             description: 'The Industrial Fan is designed for maximum airflow in large spaces such as workshops, warehouses, and garages. Built with durability in mind, it features a heavy-duty construction that withstands tough environments. The powerful motor delivers strong air circulation even in spacious areas.',
@@ -386,14 +385,24 @@ const ProductDetail = () => {
           airflowAdjustment = 2000;
         }
       } else if (product.category.includes('Air Conditioner')) {
-        if (size === '0.75 Ton') {
-          priceAdjustment = -100;
-        } else if (size === '1 Ton') {
-          priceAdjustment = 0;
-        } else if (size === '1.5 Ton') {
-          priceAdjustment = 150;
-        } else if (size === '2 Ton') {
-          priceAdjustment = 300;
+        if (product.name === 'Portable AC') {
+          // Handle Portable AC sizes
+          if (size === 'Small') {
+            priceAdjustment = 0;
+          } else if (size === 'Medium') {
+            priceAdjustment = 50;
+          }
+        } else {
+          // Handle other ACs with ton sizes
+          if (size === '0.75 Ton') {
+            priceAdjustment = -100;
+          } else if (size === '1 Ton') {
+            priceAdjustment = 0;
+          } else if (size === '1.5 Ton') {
+            priceAdjustment = 150;
+          } else if (size === '2 Ton') {
+            priceAdjustment = 300;
+          }
         }
       }
       
@@ -411,6 +420,17 @@ const ProductDetail = () => {
       
       if (product.specifications['Capacity']) {
         updatedProduct.specifications['Capacity'] = size;
+      }
+      
+      // For Portable AC, update the Cooling Capacity and Coverage Area based on size
+      if (product.name === 'Portable AC') {
+        if (size === 'Small') {
+          updatedProduct.specifications['Cooling Capacity'] = '8,000 BTU';
+          updatedProduct.specifications['Coverage Area'] = 'Up to 400 sq. ft.';
+        } else if (size === 'Medium') {
+          updatedProduct.specifications['Cooling Capacity'] = '10,000 BTU';
+          updatedProduct.specifications['Coverage Area'] = 'Up to 550 sq. ft.';
+        }
       }
       
       updatedProduct.price = product.price;
