@@ -66,12 +66,17 @@ const Header = ({ user, userRole, onLogout }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            <Link to="/" className={`px-4 py-2 rounded-lg text-gray-700 hover:text-primary hover:bg-primary/5 transition font-medium ${location.pathname === '/' ? 'text-primary bg-primary/5' : ''}`}>
-              Home
-            </Link>
-            <Link to="/products" className={`px-4 py-2 rounded-lg text-gray-700 hover:text-primary hover:bg-primary/5 transition font-medium ${location.pathname === '/products' ? 'text-primary bg-primary/5' : ''}`}>
-              Products
-            </Link>
+            {/* Only show Home and Products links if not in admin or rider dashboard */}
+            {!isRestrictedDashboard && (
+              <>
+                <Link to="/" className={`px-4 py-2 rounded-lg text-gray-700 hover:text-primary hover:bg-primary/5 transition font-medium ${location.pathname === '/' ? 'text-primary bg-primary/5' : ''}`}>
+                  Home
+                </Link>
+                <Link to="/products" className={`px-4 py-2 rounded-lg text-gray-700 hover:text-primary hover:bg-primary/5 transition font-medium ${location.pathname === '/products' ? 'text-primary bg-primary/5' : ''}`}>
+                  Products
+                </Link>
+              </>
+            )}
             
             {/* Conditional Navigation based on User Role */}
             {userRole === 'admin' && (
@@ -88,14 +93,16 @@ const Header = ({ user, userRole, onLogout }) => {
 
             {/* User Menu */}
             <div className="flex items-center pl-4 space-x-3 ml-4 border-l border-gray-200">
-              <Link to="/cart" className="text-gray-700 hover:text-primary transition relative p-2 rounded-full hover:bg-primary/5">
-                <FaShoppingCart size={20} />
-                {isAuthenticated() && cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-accent text-white text-xs w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
-                    {cartCount}
-                  </span>
-                )}
-              </Link>
+              {!isRestrictedDashboard && (
+                <Link to="/cart" className="text-gray-700 hover:text-primary transition relative p-2 rounded-full hover:bg-primary/5">
+                  <FaShoppingCart size={20} />
+                  {isAuthenticated() && cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-accent text-white text-xs w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
+                      {cartCount}
+                    </span>
+                  )}
+                </Link>
+              )}
               
               {user ? (
                 <div className="relative" ref={profileRef}>
@@ -132,23 +139,25 @@ const Header = ({ user, userRole, onLogout }) => {
                           <span>My Profile</span>
                         </div>
                       </Link>
-                      <Link
-                        to="/cart"
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                        onClick={() => setIsProfileOpen(false)}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <FaShoppingCart className="mr-3 text-primary" />
-                            <span>My Cart</span>
+                      {!isRestrictedDashboard && (
+                        <Link
+                          to="/cart"
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                          onClick={() => setIsProfileOpen(false)}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <FaShoppingCart className="mr-3 text-primary" />
+                              <span>My Cart</span>
+                            </div>
+                            {isAuthenticated() && cartCount > 0 && (
+                              <span className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">
+                                {cartCount} items
+                              </span>
+                            )}
                           </div>
-                          {isAuthenticated() && cartCount > 0 && (
-                            <span className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">
-                              {cartCount} items
-                            </span>
-                          )}
-                        </div>
-                      </Link>
+                        </Link>
+                      )}
                       <button
                         onClick={handleLogout}
                         className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
@@ -193,24 +202,29 @@ const Header = ({ user, userRole, onLogout }) => {
             
             <nav className="flex-1">
               <ul className="space-y-1">
-                <li>
-                  <Link
-                    to="/"
-                    className={`block px-4 py-3 rounded-lg transition font-medium ${location.pathname === '/' ? 'text-primary bg-primary/5' : 'text-gray-700 hover:text-primary hover:bg-primary/5'}`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/products"
-                    className={`block px-4 py-3 rounded-lg transition font-medium ${location.pathname === '/products' ? 'text-primary bg-primary/5' : 'text-gray-700 hover:text-primary hover:bg-primary/5'}`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Products
-                  </Link>
-                </li>
+                {/* Only show Home and Products links if not in admin or rider dashboard */}
+                {!isRestrictedDashboard && (
+                  <>
+                    <li>
+                      <Link
+                        to="/"
+                        className={`block px-4 py-3 rounded-lg transition font-medium ${location.pathname === '/' ? 'text-primary bg-primary/5' : 'text-gray-700 hover:text-primary hover:bg-primary/5'}`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/products"
+                        className={`block px-4 py-3 rounded-lg transition font-medium ${location.pathname === '/products' ? 'text-primary bg-primary/5' : 'text-gray-700 hover:text-primary hover:bg-primary/5'}`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Products
+                      </Link>
+                    </li>
+                  </>
+                )}
                 
                 {/* Conditional Navigation based on User Role */}
                 {userRole === 'admin' && (
@@ -251,69 +265,64 @@ const Header = ({ user, userRole, onLogout }) => {
                       />
                     ) : (
                       <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
-                        <span className="font-medium text-sm">{user.name ? user.name.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase()}</span>
+                        <span className="font-medium">{user.name ? user.name.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase()}</span>
                       </div>
                     )}
                     <div>
-                      <p className="font-medium text-gray-800">{user.name || 'User'}</p>
-                      <p className="text-sm text-gray-500 truncate">{user.email}</p>
+                      <div className="font-medium">{user.name || 'User'}</div>
+                      <div className="text-sm text-gray-500 truncate">{user.email}</div>
                     </div>
                   </div>
                   
-                  <div className="space-y-3">
+                  <div className="space-y-1">
                     <Link
                       to="/profile"
-                      className="flex items-center text-gray-700 hover:text-primary transition px-4 py-2"
+                      className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-primary/5 hover:text-primary transition font-medium"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <FaUserCircle className="mr-3 text-primary" />
-                      <span>My Profile</span>
+                      My Profile
                     </Link>
-                    <Link
-                      to="/cart"
-                      className="flex items-center justify-between text-gray-700 hover:text-primary transition px-4 py-2"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <div className="flex items-center">
-                        <FaShoppingCart className="mr-3 text-primary" />
-                        <span>My Cart</span>
-                      </div>
-                      {isAuthenticated() && cartCount > 0 && (
-                        <span className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">
-                          {cartCount} items
-                        </span>
-                      )}
-                    </Link>
+                    
+                    {!isRestrictedDashboard && (
+                      <Link
+                        to="/cart"
+                        className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-primary/5 hover:text-primary transition font-medium"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span>My Cart</span>
+                          {isAuthenticated() && cartCount > 0 && (
+                            <span className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs font-medium">
+                              {cartCount} items
+                            </span>
+                          )}
+                        </div>
+                      </Link>
+                    )}
+                    
                     <button
-                      onClick={() => {
-                        handleLogout();
-                        setIsMenuOpen(false);
-                      }}
-                      className="flex items-center text-red-500 hover:text-red-700 transition w-full text-left px-4 py-2"
+                      className="w-full text-left px-4 py-2 rounded-lg text-red-600 hover:bg-red-50 transition font-medium"
+                      onClick={handleLogout}
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                      </svg>
-                      <span>Sign Out</span>
+                      Sign Out
                     </button>
                   </div>
                 </>
               ) : (
-                <div className="space-y-3">
+                <div className="flex flex-col space-y-2">
                   <Link
                     to="/login"
-                    className="flex items-center justify-center bg-primary text-white hover:bg-primary-dark transition rounded-lg px-4 py-3 font-medium"
+                    className="w-full px-4 py-2 rounded-lg text-center transition font-medium bg-gray-50 text-gray-700 hover:bg-primary/5 hover:text-primary"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <FaUser className="mr-2" size={14} />
-                    <span>Sign In</span>
+                    Sign In
                   </Link>
                   <Link
                     to="/signup"
-                    className="flex items-center justify-center bg-gray-100 text-gray-700 hover:bg-gray-200 transition rounded-lg px-4 py-3 font-medium"
+                    className="w-full px-4 py-2 rounded-lg text-center transition font-medium bg-primary text-white hover:bg-primary-dark"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <span>Create Account</span>
+                    Sign Up
                   </Link>
                 </div>
               )}
