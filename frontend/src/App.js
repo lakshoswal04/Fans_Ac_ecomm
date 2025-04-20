@@ -55,7 +55,7 @@ function SafeGoogleOAuthProvider({ children }) {
 function AppContent() {
   const location = useLocation();
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [userRole, setUserRole] = useState(null);
   
   // Check if current page is login or signup
@@ -77,19 +77,9 @@ function AppContent() {
     localStorage.removeItem('userRole');
   };
   
-  // Check for stored user on initial load
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    const storedRole = localStorage.getItem('userRole');
-    
-    if (storedUser && storedRole) {
-      setUser(JSON.parse(storedUser));
-      setUserRole(storedRole);
-    }
-    
-    setLoading(false);
-  }, []);
-
+  // We're no longer checking for stored user on initial load
+  // This ensures no user is automatically logged in when first accessing the site
+  
   // Protected route components
   const ProtectedRoute = ({ children, allowedRoles }) => {
     if (loading) {
